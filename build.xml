@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project mmucacomplexityanalysis">
+    <target name="clean">
+        <delete dir="bin"/>	
+        <delete>
+            <fileset dir="dist" includes="*.jar"/>
+        </delete>
+    </target>
+
+    <target name="compile" depends="clean">
+        <mkdir dir="bin"/>
+    	<path id="build-classpath">
+            <fileset dir="lib">
+                <include name="*.jar"/>
+            </fileset>
+        </path>
+        <javac srcdir="src" classpathref="build-classpath" destdir="bin" includeantruntime="false" debug="true"/>
+    </target>
+
+    <target name="create_run_jar" depends="compile">
+        <property name="jarname" value="jchainme" />
+        <!-- Generator stuff -->
+    	<delete file="dist/${jarname}.jar" />
+
+    	<path id="build-classpath">
+            <fileset dir="lib">
+                <include name="*.jar"/>
+            </fileset>
+        </path>
+
+    	<manifestclasspath property="lib.list" jarfile="dist/${jarname}.jar">
+            <classpath refid="build-classpath"/>
+        </manifestclasspath>
+    	
+        <jar destfile="dist/${jarname}.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="es.csic.iiia.chainme.Solver"/>
+                <attribute name="Class-Path" value="${lib.list}"/>
+            </manifest>
+            <fileset dir="bin"/>
+        </jar>
+    </target>
+</project>

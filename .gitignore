@@ -1,0 +1,9 @@
+# Compiled classes/jars
+dist
+bin
+
+# Eclipse stuff
+.classpath
+.externalToolBuilders/
+.project
+.settings/
