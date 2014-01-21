@@ -84,8 +84,6 @@ public class Chainme {
             com.tick();
         }
 
-        calcBeliefs();
-
         calcSolution();
     }
 
