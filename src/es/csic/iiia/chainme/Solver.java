@@ -36,11 +36,13 @@
  */
 package es.csic.iiia.chainme;
 
+import es.csic.iiia.chainme.algorithms.Algorithm;
+import es.csic.iiia.chainme.algorithms.Chainme;
 import es.csic.iiia.chainme.communication.ParallelCommunicationAdapter;
 import es.csic.iiia.chainme.communication.SequentialCommunicationAdapter;
-import es.csic.iiia.chainme.parser.ExampleProblem;
-import es.csic.iiia.chainme.parser.LibDaiParser;
-import es.csic.iiia.chainme.parser.ProblemParser;
+import es.csic.iiia.chainme.parsers.ExampleProblem;
+import es.csic.iiia.chainme.parsers.LibDaiParser;
+import es.csic.iiia.chainme.parsers.ProblemParser;
 import es.csic.iiia.maxsum.Factor;
 import gnu.getopt.Getopt;
 

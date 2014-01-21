@@ -34,58 +34,19 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme.communication;
+package es.csic.iiia.chainme.parsers;
 
-import es.csic.iiia.chainme.factors.MediatorFactor;
-import es.csic.iiia.maxsum.CommunicationAdapter;
+import java.io.FileNotFoundException;
+import java.util.List;
+
 import es.csic.iiia.maxsum.Factor;
 
 /**
 *
 * @author Toni Penya-Alba <tonipenya@iiia.csic.es>
 */
-public abstract class AbstractCommunicationAdapter<T extends Factor<Factor>> implements CommunicationAdapter<T> {
-    private double dampingFactor;;
-    private double maxDiff = Double.POSITIVE_INFINITY;
+public interface ProblemParser {
 
+    List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException;
 
-    /**
-     * TODO: Document.
-     */
-    public abstract void doSend(double message, T sender, T recipient);
-
-    public void send(double message, T sender, T recipient) {
-        if (sender instanceof MediatorFactor) {
-            message = recipient.getMessage(sender) * dampingFactor
-                    + message * (1 - dampingFactor);
-        }
-
-        double diff = Math.abs(recipient.getMessage(sender) - message);
-        maxDiff = Math.max(diff, maxDiff);
-
-        doSend(message, sender, recipient);
-    }
-
-    /**
-     * TODO: Document.
-     */
-    public void setDampingFactor(double dampingFactor) {
-        this.dampingFactor = dampingFactor;
-
-    }
-
-    /**
-     * TODO: Document.
-     */
-    public void tick() {
-        // Do nothing.
-    }
-
-    public double getMaxDiff() {
-        return maxDiff;
-    }
-
-    public void setMaxDiff(double maxDiff) {
-        this.maxDiff = maxDiff;
-    }
 }

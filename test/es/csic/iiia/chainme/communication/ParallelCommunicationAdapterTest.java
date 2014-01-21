@@ -34,7 +34,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme;
+package es.csic.iiia.chainme.communication;
 
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.mock;

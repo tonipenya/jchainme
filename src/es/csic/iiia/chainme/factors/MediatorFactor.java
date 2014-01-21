@@ -34,71 +34,71 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme;
+package es.csic.iiia.chainme.factors;
 
-import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import es.csic.iiia.maxsum.Factor;
-import es.csic.iiia.maxsum.factors.VariableFactor;
+import es.csic.iiia.maxsum.factors.TwoSidedEqualityFactor;
+import es.csic.iiia.maxsum.util.NeighborValue;
 
 /**
-*
-* @author Toni Penya-Alba <tonipenya@iiia.csic.es>
-*/
-public class Chainme extends Algorithm {
-    public Chainme(Configuration conf, List<Factor> factors) {
-        super(conf, factors);
+ *
+ * @author Toni Penya-Alba <tonipenya@iiia.csic.es>
+ */
+public class MediatorFactor extends TwoSidedEqualityFactor<Factor> {
+
+    public boolean isFeasible(Map<Factor, Boolean> allocation) {
+        return evaluate(allocation) != getMaxOperator().getWorstValue();
     }
 
-    @Override
-    public int getNParticipants() {
-        return vars.size();
-    }
+    public void mend(Map<Factor, Boolean> allocation) {
+        int nActiveSellers = 0;
+        int nActiveBuyers = 0;
 
-    @Override
-    public boolean[] getAllocation() {
-        final int nVars = vars.size();
-        boolean[] allocation = new boolean[nVars];
+        final List<Factor> neighbors = getNeighbors();
+        final int nNeighbors = neighbors.size();
+        for (int i = 0; i < nNeighbors; i++) {
+            Factor neighbor = neighbors.get(i);
 
-        for (int i = 0; i < nVars; i++) {
-            VariableFactor var = vars.get(i);
-            allocation[i] = solution.get(var);
-        }
-
-        return allocation;
-    }
-
-    @Override
-    public void pruneAllocation() {
-
-        boolean somethingFixed = true;
-        while (somethingFixed) {
-            somethingFixed = fixAllocationOneStep();
-        }
-    }
-
-    private boolean fixAllocationOneStep() {
-        boolean somethingFixed = false;
-
-        Iterator<Factor> factorIt = factors.iterator();
-
-        while (factorIt.hasNext()) {
-            Factor factor = factorIt.next();
-            if (!(factor instanceof MediatorFactor)) {
-                continue;
+            if (allocation.get(neighbor)) {
+                if (i < nElementsA) {
+                    nActiveSellers++;
+                } else {
+                    nActiveBuyers++;
+                }
             }
-
-            MediatorFactor mediator = (MediatorFactor) factor;
-            if (mediator.isFeasible(solution)) {
-                continue;
-            }
-
-            mediator.mend(solution);
-            somethingFixed = true;
         }
 
-        return somethingFixed;
+        if (nActiveSellers > nActiveBuyers) {
+            keepNHighest(nActiveBuyers, getSortedSetAPairs(), allocation);
+        } else {
+            keepNHighest(nActiveSellers, getSortedSetBPairs(), allocation);
+        }
     }
+
+    private void keepNHighest(int nToKeep,
+            List<NeighborValue<Factor>> neighbors,
+            Map<Factor, Boolean> allocation) {
+        final int nNeighbors = neighbors.size();
+        int nProcessed = 0;
+        for (; nProcessed < nNeighbors && nToKeep > 0; nProcessed++) {
+            Factor neighbor = neighbors.get(nProcessed).neighbor;
+            if (allocation.get(neighbor)) {
+                nToKeep--;
+            }
+        }
+
+        for (int i = nProcessed; i < nNeighbors; i++) {
+            allocation.put(neighbors.get(i).neighbor, false);
+        }
+    }
+
+    @Override
+    public void send(double message, Factor recipient) {
+        super.send(message, recipient);
+    }
+
 
 }

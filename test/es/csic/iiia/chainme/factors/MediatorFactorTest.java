@@ -1,4 +1,4 @@
-package es.csic.iiia.chainme;
+package es.csic.iiia.chainme.factors;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -10,6 +10,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import es.csic.iiia.chainme.factors.MediatorFactor;
 import es.csic.iiia.maxsum.Factor;
 import es.csic.iiia.maxsum.MaxOperator;
 import es.csic.iiia.maxsum.Maximize;

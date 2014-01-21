@@ -34,7 +34,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme;
+package es.csic.iiia.chainme.algorithms;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.csic.iiia.chainme.Configuration;
 import es.csic.iiia.chainme.communication.AbstractCommunicationAdapter;
 import es.csic.iiia.chainme.communication.ParallelCommunicationAdapter;
 import es.csic.iiia.maxsum.Factor;

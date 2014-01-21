@@ -34,19 +34,73 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme.parser;
+package es.csic.iiia.chainme.algorithms;
 
-import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.List;
 
+import es.csic.iiia.chainme.Configuration;
+import es.csic.iiia.chainme.factors.MediatorFactor;
 import es.csic.iiia.maxsum.Factor;
+import es.csic.iiia.maxsum.factors.VariableFactor;
 
 /**
 *
 * @author Toni Penya-Alba <tonipenya@iiia.csic.es>
 */
-public interface ProblemParser {
+public class Chainme extends Algorithm {
+    public Chainme(Configuration conf, List<Factor> factors) {
+        super(conf, factors);
+    }
 
-    List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException;
+    @Override
+    public int getNParticipants() {
+        return vars.size();
+    }
+
+    @Override
+    public boolean[] getAllocation() {
+        final int nVars = vars.size();
+        boolean[] allocation = new boolean[nVars];
+
+        for (int i = 0; i < nVars; i++) {
+            VariableFactor var = vars.get(i);
+            allocation[i] = solution.get(var);
+        }
+
+        return allocation;
+    }
+
+    @Override
+    public void pruneAllocation() {
+
+        boolean somethingFixed = true;
+        while (somethingFixed) {
+            somethingFixed = fixAllocationOneStep();
+        }
+    }
+
+    private boolean fixAllocationOneStep() {
+        boolean somethingFixed = false;
+
+        Iterator<Factor> factorIt = factors.iterator();
+
+        while (factorIt.hasNext()) {
+            Factor factor = factorIt.next();
+            if (!(factor instanceof MediatorFactor)) {
+                continue;
+            }
+
+            MediatorFactor mediator = (MediatorFactor) factor;
+            if (mediator.isFeasible(solution)) {
+                continue;
+            }
+
+            mediator.mend(solution);
+            somethingFixed = true;
+        }
+
+        return somethingFixed;
+    }
 
 }

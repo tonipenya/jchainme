@@ -34,7 +34,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme.parser;
+package es.csic.iiia.chainme.parsers;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,7 +44,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-import es.csic.iiia.chainme.MediatorFactor;
+import es.csic.iiia.chainme.factors.MediatorFactor;
 import es.csic.iiia.maxsum.Factor;
 import es.csic.iiia.maxsum.factors.IndependentFactor;
 import es.csic.iiia.maxsum.factors.VariableFactor;
