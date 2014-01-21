@@ -124,32 +124,32 @@ public class Solver {
 
         // Initialize the factors and beliefs.
         System.out.println("Initializing...");
-        Algorithm chainme = new Chainme(conf, factors);
+        Algorithm algorithm = new Chainme(conf, factors);
 
         // Run binary max-sum.
         System.out.println("Running...");
         long tic = System.currentTimeMillis();
-        chainme.solve();
+        algorithm.solve();
         long toc = System.currentTimeMillis();
         double time = (toc - tic)/1000d;
 
         // Output results.
-        boolean[] allocation = chainme.getAllocation();
-        double objective = chainme.getObjective();
-        System.out.println("nParticipants: " + chainme.getNParticipants());
-        System.out.println("Iters: " + chainme.getIters());
+        boolean[] allocation = algorithm.getAllocation();
+        double objective = algorithm.getObjective();
+        System.out.println("nParticipants: " + algorithm.getNParticipants());
+        System.out.println("Iters: " + algorithm.getIters());
         System.out.println("OBJECTIVE: " + objective);
 //        printAllocation(allocation);
 
         tic = System.currentTimeMillis();
-        chainme.pruneAllocation();
+        algorithm.pruneAllocation();
         toc = System.currentTimeMillis();
         time += (toc - tic)/1000d;
         System.out.println("Time: " + time);
 
-        objective = chainme.getObjective();
+        objective = algorithm.getObjective();
         System.out.println("OBJECTIVE-D: " + objective);
-        allocation = chainme.getAllocation();
+        allocation = algorithm.getAllocation();
         printAllocation(allocation);
     }
 
