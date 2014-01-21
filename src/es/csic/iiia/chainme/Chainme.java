@@ -161,7 +161,7 @@ public class Chainme {
         }
 
         if (com instanceof ParallelCommunicationAdapter) {
-            int bufferSize = calcMessageBufferSize(factors);
+            int bufferSize = calcMessageBufferSize();
             ((ParallelCommunicationAdapter) com).initBuffer(bufferSize);
         }
 
@@ -169,7 +169,7 @@ public class Chainme {
         setFactorsMaxOp();
     }
 
-    private int calcMessageBufferSize(List<Factor> factors) {
+    private int calcMessageBufferSize() {
         int count = 0;
 
         for (Factor factor : factors) {
