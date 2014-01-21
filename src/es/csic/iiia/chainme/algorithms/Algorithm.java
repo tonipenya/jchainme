@@ -101,7 +101,6 @@ public abstract class Algorithm {
         double objective = 0;
 
         for (Factor<Factor> factor : factors) {
-            // TODO: See if this 'if' is really necessary.
             if (factor instanceof ParticipantFactor) {
                 continue;
             }
