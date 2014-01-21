@@ -1,0 +1,3 @@
+Java implementation of CHAINME algorithm for Supply Chain Formation. [http://iiia.csic.es/~tonipenya/pdfs/aamas2013.pdf]
+
+It builds on top of the Binary Max-Sum library [https://github.com/tonipenya/BinaryMaxSum]
