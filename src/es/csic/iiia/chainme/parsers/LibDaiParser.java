@@ -55,9 +55,14 @@ public class LibDaiParser implements ProblemParser {
     private List<Factor> factors = new ArrayList<Factor>();
 
     @Override
-    public List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException {
+    public List<Factor> parseProblemFile(String problemFile) {
         List<ParticipantFactor> vars = new ArrayList<ParticipantFactor>();
-        Scanner scanner = new Scanner(new File(problemFile));
+        Scanner scanner;
+        try {
+            scanner = new Scanner(new File(problemFile));
+        } catch (FileNotFoundException e) {
+            throw new ParserException(e);
+        }
 
         final int nFactors = scanner.nextInt();
 

@@ -40,13 +40,12 @@ import es.csic.iiia.chainme.algorithms.Algorithm;
 import es.csic.iiia.chainme.algorithms.Chainme;
 import es.csic.iiia.chainme.communication.ParallelCommunicationAdapter;
 import es.csic.iiia.chainme.communication.SequentialCommunicationAdapter;
-import es.csic.iiia.chainme.parsers.ExampleProblem;
 import es.csic.iiia.chainme.parsers.LibDaiParser;
-import es.csic.iiia.chainme.parsers.ProblemParser;
+import es.csic.iiia.chainme.parsers.ParserException;
+import es.csic.iiia.chainme.parsers.XMLParser;
 import es.csic.iiia.maxsum.Factor;
 import gnu.getopt.Getopt;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -57,7 +56,10 @@ import java.util.List;
 public class Solver {
     final static String PROBLEM_FILE = "examples/5000participants_2500goods.fg";
     final static String USAGE =
-    "Usage: jchainme [options] <problem-file>\n" +
+    "Usage: jchainme [options] -f<format> <problem-file>\n" +
+    "Formats\n" +
+    "   -fx         XML." +
+    "   -ff         Factor graph.\n"+
     "Options\n" +
     "   -s[r]       Sequential message update. Optional parameter 'r' for random order.\n" +
     "   -p          Parallel message update.\n" +
@@ -69,7 +71,7 @@ public class Solver {
      * @param args
      */
     public static void main(String[] args) {
-        Getopt g = new Getopt("jchainme", args, "ps::d:i:h");
+        Getopt g = new Getopt("jchainme", args, "ps::d:i:f:h");
         Configuration conf = new Configuration();
 
         // Parse command line options.
@@ -96,6 +98,15 @@ public class Solver {
                 conf.maxIters = Integer.valueOf(arg);
                 break;
 
+            case 'f':
+                arg = g.getOptarg();
+                if ("x".equals(arg)) {
+                    conf.parser = new XMLParser();
+                } else {
+                    conf.parser = new LibDaiParser();
+                }
+                break;
+
             case '?':
                 System.err.println("The option '" + (char) g.getOptopt()
                         + "' is not valid");
@@ -114,14 +125,15 @@ public class Solver {
         }
         System.out.println("Parsing problem");
         String problemFile = args[g.getOptind()];
-        ProblemParser parser = new LibDaiParser();
+//        ProblemParser parser = new LibDaiParser();
 //         ProblemParser parser = new ExampleProblem();
         List<Factor> factors = null;
 
         try {
-            factors = parser.parseProblemFile(problemFile);
-        } catch (FileNotFoundException ex) {
-            printUsageAndExit("The file " + problemFile + " does not exist.");
+            factors = conf.parser.parseProblemFile(problemFile);
+        } catch (ParserException ex) {
+            printUsageAndExit("Could not load the file " + problemFile + "\n" +
+            		ex.getMessage());
         }
 
         // Initialize the factors and beliefs.

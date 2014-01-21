@@ -36,7 +36,6 @@
  */
 package es.csic.iiia.chainme.parsers;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import es.csic.iiia.maxsum.Factor;
@@ -47,6 +46,6 @@ import es.csic.iiia.maxsum.Factor;
 */
 public interface ProblemParser {
 
-    List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException;
+    List<Factor> parseProblemFile(String problemFile);
 
 }

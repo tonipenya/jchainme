@@ -26,25 +26,25 @@
  </Transformation>
 
  <BidsCombination agentName="agent1" type="XOR">
-   <AtomicBid price="-1">
+   <AtomicBid price="-0.3">
      <BidTransformation idRef="4" quantity="1" />
    </AtomicBid>
  </BidsCombination>
 
  <BidsCombination agentName="agent2" type="XOR">
-   <AtomicBid price="-1">
+   <AtomicBid price="-0.7">
      <BidTransformation idRef="5" quantity="1" />
    </AtomicBid>
  </BidsCombination>
  
  <BidsCombination agentName="agent3" type="XOR">
-   <AtomicBid price="-1">
+   <AtomicBid price="-0.5">
      <BidTransformation idRef="6" quantity="1" />
    </AtomicBid>
  </BidsCombination>
 
  <BidsCombination agentName="agent4" type="XOR">
-   <AtomicBid price="-1">
+   <AtomicBid price="-0.2">
      <BidTransformation idRef="7" quantity="1" />
    </AtomicBid>
  </BidsCombination>

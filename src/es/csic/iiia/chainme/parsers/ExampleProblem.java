@@ -52,7 +52,7 @@ import es.csic.iiia.maxsum.factors.IndependentFactor;
 public class ExampleProblem implements ProblemParser {
 
     @Override
-    public List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException {
+    public List<Factor> parseProblemFile(String problemFile) {
         List<Factor> factors = new ArrayList<Factor>();
 
         // Create variables
