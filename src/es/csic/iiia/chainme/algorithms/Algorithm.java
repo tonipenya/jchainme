@@ -45,9 +45,9 @@ import java.util.Map;
 import es.csic.iiia.chainme.Configuration;
 import es.csic.iiia.chainme.communication.AbstractCommunicationAdapter;
 import es.csic.iiia.chainme.communication.ParallelCommunicationAdapter;
+import es.csic.iiia.chainme.factors.ParticipantFactor;
 import es.csic.iiia.maxsum.Factor;
 import es.csic.iiia.maxsum.MaxOperator;
-import es.csic.iiia.maxsum.factors.VariableFactor;
 
 /**
 *
@@ -58,7 +58,7 @@ public abstract class Algorithm {
     protected final AbstractCommunicationAdapter com;
     protected final MaxOperator op;
     protected List<Factor> factors;
-    protected List<VariableFactor<Factor>> vars;
+    protected List<ParticipantFactor> vars;
     protected Map<Factor, Boolean> solution;
     private int iters;
 
@@ -101,7 +101,8 @@ public abstract class Algorithm {
         double objective = 0;
 
         for (Factor<Factor> factor : factors) {
-            if (factor instanceof VariableFactor) {
+            // TODO: See if this 'if' is really necessary.
+            if (factor instanceof ParticipantFactor) {
                 continue;
             }
             objective += factor.evaluate(solution);
@@ -151,42 +152,21 @@ public abstract class Algorithm {
 
     private void calcSolution() {
         final int nVars = vars.size();
-        final double[] beliefs = calcBeliefs();
         solution = new HashMap<Factor, Boolean>(nVars);
 
         for (int i = 0; i < nVars; i++) {
-            solution.put(vars.get(i), beliefs[i] >= 0);
+            solution.put(vars.get(i), vars.get(i).calcBelief() >= 0);
         }
     }
 
     protected void extractVarsFromFactors() {
-        vars = new ArrayList<VariableFactor<Factor>>();
+        vars = new ArrayList<ParticipantFactor>();
 
         for (Factor<Factor> factor : factors) {
-            if (factor instanceof VariableFactor) {
-                vars.add((VariableFactor<Factor>) factor);
+            if (factor instanceof ParticipantFactor) {
+                vars.add((ParticipantFactor) factor);
             }
         }
-    }
-
-    private double[] calcBeliefs() {
-        final int nVars = vars.size();
-        double[] beliefs = new double[nVars];
-        for (int j = 0; j < nVars; j++) {
-            VariableFactor<Factor> var = vars.get(j);
-            beliefs[j] = calcBelief(var);
-        }
-
-        return beliefs;
-    }
-
-    private double calcBelief(VariableFactor<Factor> var) {
-        double belief = 0d;
-        for (Factor<Factor> neighbor : var.getNeighbors()) {
-            belief += var.getMessage(neighbor);
-        }
-
-        return belief;
     }
 
 }

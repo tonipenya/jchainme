@@ -41,8 +41,8 @@ import java.util.List;
 
 import es.csic.iiia.chainme.Configuration;
 import es.csic.iiia.chainme.factors.MediatorFactor;
+import es.csic.iiia.chainme.factors.ParticipantFactor;
 import es.csic.iiia.maxsum.Factor;
-import es.csic.iiia.maxsum.factors.VariableFactor;
 
 /**
 *
@@ -64,7 +64,7 @@ public class Chainme extends Algorithm {
         boolean[] allocation = new boolean[nVars];
 
         for (int i = 0; i < nVars; i++) {
-            VariableFactor var = vars.get(i);
+            ParticipantFactor var = vars.get(i);
             allocation[i] = solution.get(var);
         }
 

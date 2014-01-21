@@ -45,9 +45,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 import es.csic.iiia.chainme.factors.MediatorFactor;
+import es.csic.iiia.chainme.factors.ParticipantFactor;
 import es.csic.iiia.maxsum.Factor;
 import es.csic.iiia.maxsum.factors.IndependentFactor;
-import es.csic.iiia.maxsum.factors.VariableFactor;
 
 /**
 *
@@ -55,10 +55,10 @@ import es.csic.iiia.maxsum.factors.VariableFactor;
 */
 public class LibDaiParser implements ProblemParser {
     private List<Factor> factors = new ArrayList<Factor>();
-    private Map<Integer, VariableFactor<Factor>> varsMap = new HashMap<Integer, VariableFactor<Factor>>();
 
     @Override
     public List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException {
+        Map<Integer, ParticipantFactor> varsMap = new HashMap<Integer, ParticipantFactor>();
         Scanner scanner = new Scanner(new File(problemFile));
 
         final int nFactors = scanner.nextInt();
@@ -68,7 +68,7 @@ public class LibDaiParser implements ProblemParser {
 
             if (nVars == 1) {
                 final int varIdx = scanner.nextInt();
-                VariableFactor<Factor> var = new VariableFactor<Factor>();
+                ParticipantFactor var = new ParticipantFactor();
                 initialize(var);
                 varsMap.put(varIdx, var);
 

@@ -41,9 +41,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.csic.iiia.chainme.factors.MediatorFactor;
+import es.csic.iiia.chainme.factors.ParticipantFactor;
 import es.csic.iiia.maxsum.Factor;
 import es.csic.iiia.maxsum.factors.IndependentFactor;
-import es.csic.iiia.maxsum.factors.VariableFactor;
 
 /**
 *
@@ -56,13 +56,13 @@ public class ExampleProblem implements ProblemParser {
         List<Factor> factors = new ArrayList<Factor>();
 
         // Create variables
-        VariableFactor<Factor> var1 = new VariableFactor<Factor>();
+        ParticipantFactor var1 = new ParticipantFactor();
         var1.setIdentity(var1);
         factors.add(var1);
-        VariableFactor<Factor> var2 = new VariableFactor<Factor>();
+        ParticipantFactor var2 = new ParticipantFactor();
         var2.setIdentity(var2);
         factors.add(var2);
-        VariableFactor<Factor> var3 = new VariableFactor<Factor>();
+        ParticipantFactor var3 = new ParticipantFactor();
         var3.setIdentity(var3);
         factors.add(var3);
 
@@ -114,13 +114,13 @@ public class ExampleProblem implements ProblemParser {
 //        List<Factor> factors = new ArrayList<Factor>();
 //
 //        // Create variables
-//        VariableFactor<Factor> var1 = new VariableFactor<Factor>();
+//        ParticipantFactor var1 = new ParticipantFactor();
 //        var1.setIdentity(var1);
 //        factors.add(var1);
-//        VariableFactor<Factor> var2 = new VariableFactor<Factor>();
+//        ParticipantFactor var2 = new ParticipantFactor();
 //        var2.setIdentity(var2);
 //        factors.add(var2);
-//        VariableFactor<Factor> var3 = new VariableFactor<Factor>();
+//        ParticipantFactor var3 = new ParticipantFactor();
 //        var3.setIdentity(var3);
 //        factors.add(var3);
 //
