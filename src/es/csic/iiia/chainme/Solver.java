@@ -54,13 +54,20 @@ import java.util.List;
  */
 public class Solver {
     final static String PROBLEM_FILE = "examples/5000participants_2500goods.fg";
-    final static String USAGE = "jchainme [-s[r]] [-d damping_factor] [-i max_iters] problemFile";
+    final static String USAGE =
+    "Usage: jchainme [options] <problem-file>\n" +
+    "Options\n" +
+    "   -s[r]       Sequential message update. Optional parameter 'r' for random order.\n" +
+    "   -p          Parallel message update.\n" +
+    "   -d value    Damp messages by a value.\n" +
+    "   -i value    Set the maximum number of iterations.\n" +
+    "   -h          Display this message.";
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-        Getopt g = new Getopt("jchainme", args, "ps::d:i:");
+        Getopt g = new Getopt("jchainme", args, "ps::d:i:h");
         Configuration conf = new Configuration();
 
         // Parse command line options.
@@ -90,19 +97,20 @@ public class Solver {
             case '?':
                 System.err.println("The option '" + (char) g.getOptopt()
                         + "' is not valid");
-            default:
-                System.err.println(USAGE);
+            case 'h':
+                System.out.println(USAGE);
                 System.exit(-1);
+            default:
+                printUsageAndExit(null);
                 break;
             }
         }
 
         // Parse input file.
-        System.out.println("Parsing problem");
         if (g.getOptind() >= args.length) {
-            System.err.println("No file specified.");
-            System.exit(-1);
+            printUsageAndExit("No file specified.");
         }
+        System.out.println("Parsing problem");
         String problemFile = args[g.getOptind()];
         ProblemParser parser = new LibDaiParser();
 //         ProblemParser parser = new ExampleProblem();
@@ -111,8 +119,7 @@ public class Solver {
         try {
             factors = parser.parseProblemFile(problemFile);
         } catch (FileNotFoundException ex) {
-            System.err.println("The file " + problemFile + " does not exist.");
-            System.exit(-1);
+            printUsageAndExit("The file " + problemFile + " does not exist.");
         }
 
         // Initialize the factors and beliefs.
@@ -151,5 +158,11 @@ public class Solver {
                 .replace("true", "1").replace("false", "0");
 
         System.out.println(allocationString);
+    }
+
+    private static void printUsageAndExit(String message) {
+        System.err.println(message);
+        System.err.println(USAGE);
+        System.exit(-1);
     }
 }
