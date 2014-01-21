@@ -124,7 +124,7 @@ public class Solver {
 
         // Initialize the factors and beliefs.
         System.out.println("Initializing...");
-        Chainme chainme = new Chainme(conf, factors);
+        Algorithm chainme = new Chainme(conf, factors);
 
         // Run binary max-sum.
         System.out.println("Running...");
