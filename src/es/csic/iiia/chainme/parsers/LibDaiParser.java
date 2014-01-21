@@ -39,9 +39,7 @@ package es.csic.iiia.chainme.parsers;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import es.csic.iiia.chainme.factors.MediatorFactor;
@@ -58,7 +56,7 @@ public class LibDaiParser implements ProblemParser {
 
     @Override
     public List<Factor> parseProblemFile(String problemFile) throws FileNotFoundException {
-        Map<Integer, ParticipantFactor> varsMap = new HashMap<Integer, ParticipantFactor>();
+        List<ParticipantFactor> vars = new ArrayList<ParticipantFactor>();
         Scanner scanner = new Scanner(new File(problemFile));
 
         final int nFactors = scanner.nextInt();
@@ -70,7 +68,7 @@ public class LibDaiParser implements ProblemParser {
                 final int varIdx = scanner.nextInt();
                 ParticipantFactor var = new ParticipantFactor();
                 initialize(var);
-                varsMap.put(varIdx, var);
+                vars.add(varIdx, var);
 
                 // Skip the rest of the line
                 scanner.nextLine();
@@ -97,7 +95,7 @@ public class LibDaiParser implements ProblemParser {
 
                 for (int i = 0; i < nVars - 1; i++) {
                     final int varIdx = scanner.nextInt();
-                    makeNeighbors(mediator, varsMap.get(varIdx));
+                    makeNeighbors(mediator, vars.get(varIdx));
                 }
 
                 // Skip last variable
