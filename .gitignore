@@ -7,3 +7,6 @@ bin
 .externalToolBuilders/
 .project
 .settings/
+
+# Test class
+src/es/csic/iiia/chainme/Test.java
