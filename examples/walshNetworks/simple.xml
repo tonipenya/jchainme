@@ -1,0 +1,57 @@
+<AuctionData>
+ <Good id="1" name="G1"/>
+ <Good id="2" name="G3"/>
+ <Good id="3" name="G2"/>
+
+ <Transformation id="4" name="P1">
+   <OutputGood idRef="1" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="5" name="P2">
+   <OutputGood idRef="2" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="6" name="P3">
+   <InputGood idRef="1" quantity="1"/>
+   <OutputGood idRef="3" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="7" name="P4">
+   <InputGood idRef="2" quantity="1"/>
+   <OutputGood idRef="3" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="8" name="C1">
+   <InputGood idRef="3" quantity="1"/>
+ </Transformation>
+
+ <BidsCombination agentName="agent1" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="4" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+
+ <BidsCombination agentName="agent2" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="5" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent3" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="6" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+
+ <BidsCombination agentName="agent4" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="7" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+
+ <BidsCombination agentName="agent5" type="XOR">
+   <AtomicBid price="1.216">
+     <BidTransformation idRef="8" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+</AuctionData>

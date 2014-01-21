@@ -1,0 +1,33 @@
+<AuctionData>
+ <Good id="1" name="G1"/>
+
+ <Transformation id="4" name="P1">
+   <OutputGood idRef="1" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="5" name="P2">
+   <OutputGood idRef="1" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="6" name="C1">
+   <InputGood idRef="1" quantity="1"/>
+ </Transformation>
+
+ <BidsCombination agentName="agent1" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="4" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+
+ <BidsCombination agentName="agent2" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="5" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent5" type="XOR">
+   <AtomicBid price="1.216">
+     <BidTransformation idRef="6" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+</AuctionData>

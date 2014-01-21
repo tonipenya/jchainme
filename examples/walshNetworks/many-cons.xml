@@ -1,0 +1,293 @@
+<AuctionData>
+ <Good id="1" name="G1"/>
+ <Good id="2" name="G2"/>
+ <Good id="3" name="G3"/>
+ <Good id="4" name="G4"/>
+ <Good id="5" name="G5"/>
+ <Good id="6" name="G6"/>
+ <Good id="7" name="G7"/>
+ <Good id="8" name="G8"/>
+ <Good id="9" name="G9"/>
+ <Good id="10" name="G10"/>
+ <Good id="11" name="G11"/>
+ <Good id="12" name="G12"/>
+ <Good id="13" name="G13"/>
+ <Good id="14" name="G14"/>
+ <Good id="15" name="G15"/>
+ <Good id="16" name="G16"/>
+ <Good id="17" name="G17"/>
+ <Good id="18" name="G18"/>
+ <Good id="19" name="G19"/>
+ <Good id="20" name="G20"/>
+ <Good id="21" name="G21"/>
+
+ <Transformation id="22" name="P1">
+   <OutputGood idRef="1" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="23" name="P2">
+   <OutputGood idRef="2" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="24" name="P3">
+   <OutputGood idRef="3" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="25" name="P4">
+   <OutputGood idRef="4" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="26" name="P5">
+   <OutputGood idRef="5" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="27" name="P6">
+   <OutputGood idRef="6" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="28" name="P7">
+   <OutputGood idRef="7" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="29" name="P8">
+   <OutputGood idRef="8" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="30" name="P9">
+   <OutputGood idRef="9" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="31" name="P10">
+   <OutputGood idRef="10" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="32" name="P11">
+   <OutputGood idRef="11" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="33" name="P12">
+   <OutputGood idRef="12" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="34" name="P13">
+   <InputGood idRef="1" quantity="1"/>
+   <InputGood idRef="2" quantity="1"/>
+   <OutputGood idRef="13" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="35" name="P14">
+   <InputGood idRef="3" quantity="1"/>
+   <InputGood idRef="4" quantity="1"/>
+   <OutputGood idRef="14" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="36" name="P15">
+   <InputGood idRef="5" quantity="1"/>
+   <InputGood idRef="6" quantity="1"/>
+   <OutputGood idRef="15" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="37" name="P16">
+   <InputGood idRef="7" quantity="1"/>
+   <InputGood idRef="8" quantity="1"/>
+   <OutputGood idRef="16" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="38" name="P17">
+   <InputGood idRef="9" quantity="1"/>
+   <InputGood idRef="10" quantity="1"/>
+   <OutputGood idRef="17" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="39" name="P18">
+   <InputGood idRef="11" quantity="1"/>
+   <InputGood idRef="12" quantity="1"/>
+   <OutputGood idRef="18" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="40" name="P19">
+   <InputGood idRef="13" quantity="1"/>
+   <InputGood idRef="14" quantity="1"/>
+   <OutputGood idRef="19" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="41" name="P20">
+   <InputGood idRef="14" quantity="1"/>
+   <InputGood idRef="15" quantity="1"/>
+   <OutputGood idRef="20" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="42" name="P21">
+   <InputGood idRef="16" quantity="1"/>
+   <InputGood idRef="17" quantity="1"/>
+   <OutputGood idRef="20" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="43" name="P22">
+   <InputGood idRef="17" quantity="1"/>
+   <InputGood idRef="18" quantity="1"/>
+   <OutputGood idRef="21" quantity="1"/>
+ </Transformation>
+
+ <Transformation id="44" name="C1">
+   <InputGood idRef="19" quantity="1"/>
+ </Transformation>
+ 
+ <Transformation id="45" name="C2">
+   <InputGood idRef="20" quantity="1"/>
+ </Transformation>
+ 
+ <Transformation id="46" name="C3">
+   <InputGood idRef="21" quantity="1"/>
+ </Transformation>
+ 
+ <BidsCombination agentName="agent1" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="22" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent2" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="23" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent3" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="24" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent4" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="25" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent5" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="26" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent6" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="27" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent7" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="28" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent8" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="29" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent9" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="30" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent10" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="31" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent11" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="32" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent12" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="33" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent13" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="34" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent14" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="35" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent15" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="36" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent16" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="37" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent17" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="38" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent18" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="39" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent19" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="40" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent20" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="41" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent21" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="42" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent22" type="XOR">
+   <AtomicBid price="-1">
+     <BidTransformation idRef="43" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent23" type="XOR">
+   <AtomicBid price="4.42">
+     <BidTransformation idRef="44" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent24" type="XOR">
+   <AtomicBid price="3.89">
+     <BidTransformation idRef="45" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+ 
+ <BidsCombination agentName="agent25" type="XOR">
+   <AtomicBid price="4.44">
+     <BidTransformation idRef="46" quantity="1" />
+   </AtomicBid>
+ </BidsCombination>
+</AuctionData>
