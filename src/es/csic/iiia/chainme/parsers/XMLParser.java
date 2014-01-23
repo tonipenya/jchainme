@@ -84,9 +84,9 @@ public class XMLParser implements ProblemParser {
             } else if (ATOMIC_BID.equals(name)) {
                 cost = getDoubleValue(startElement, PRICE_QNAME);
             } else if (BID_TRANSFORMATION.equals(name)) {
-                final int nParticipants = participants.size();
+                final int nGoods = mediators.size();
                 final int participantId = getIntValue(startElement,
-                        ID_REF_QNAME) - nParticipants + 1;
+                        ID_REF_QNAME) - nGoods - 1;
                 final ParticipantFactor lParticipant = participants
                         .get(participantId);
                 IndependentFactor<Factor> utilityFactor = new IndependentFactor<Factor>();
