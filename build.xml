@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project mmucacomplexityanalysis">
+<project default="jar" name="jchainme">
     <target name="clean">
         <delete dir="bin"/>
         <delete dir="dist"/>
@@ -15,7 +15,7 @@
         <javac srcdir="src" classpathref="build-classpath" destdir="bin" includeantruntime="false" debug="true"/>
     </target>
 
-    <target name="create_run_jar" depends="clean,compile">
+    <target name="jar" depends="clean,compile">
         <property name="jarname" value="jchainme" />
 
         <mkdir dir="dist"/>
