@@ -46,6 +46,7 @@ import es.csic.iiia.chainme.factors.MediatorFactor;
 import es.csic.iiia.chainme.factors.ParticipantFactor;
 import es.csic.iiia.maxsum.Factor;
 import es.csic.iiia.maxsum.factors.IndependentFactor;
+import java.util.Locale;
 
 /**
 *
@@ -60,6 +61,7 @@ public class LibDaiParser implements ProblemParser {
         Scanner scanner;
         try {
             scanner = new Scanner(new File(problemFile));
+            scanner.useLocale(Locale.ENGLISH);
         } catch (FileNotFoundException e) {
             throw new ParserException(e);
         }
