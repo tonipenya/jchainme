@@ -45,7 +45,6 @@ public class XMLParser implements ProblemParser {
 
         List<ParticipantFactor> participants = new ArrayList<ParticipantFactor>();
         List<MediatorFactor> mediators = new ArrayList<MediatorFactor>();
-        List<Integer> nSellers = new ArrayList<Integer>();
 
         ParticipantFactor participant = new ParticipantFactor();
         double cost = 0d;
@@ -67,8 +66,8 @@ public class XMLParser implements ProblemParser {
 
             if (GOOD.equals(name)) {
                 MediatorFactor mediator = new MediatorFactor();
+                mediator.setNElementsA(0);
                 mediators.add(mediator);
-                nSellers.add(0);
                 initialize(mediator);
             } else if (TRANSFORMATION.equals(name)) {
                 participant = new ParticipantFactor();
@@ -76,11 +75,14 @@ public class XMLParser implements ProblemParser {
                 initialize(participant);
             } else if (INPUT_GOOD.equals(name)) {
                 final int mediatorId = getIntValue(startElement, ID_REF_QNAME) - 1;
-                makeNeighbors(participant, mediators.get(mediatorId));
+                final MediatorFactor mediator = mediators.get(mediatorId);
+                mediator.addBNeighbor(participant);
+                participant.addNeighbor(mediator);
             } else if (OUTPUT_GOOD.equals(name)) {
                 final int mediatorId = getIntValue(startElement, ID_REF_QNAME) - 1;
-                nSellers.set(mediatorId, nSellers.get(mediatorId) + 1);
-                makeNeighbors(participant, mediators.get(mediatorId));
+                final MediatorFactor mediator = mediators.get(mediatorId);
+                mediator.addANeighbor(participant);
+                participant.addNeighbor(mediator);
             } else if (ATOMIC_BID.equals(name)) {
                 cost = getDoubleValue(startElement, PRICE_QNAME);
             } else if (BID_TRANSFORMATION.equals(name)) {
@@ -94,12 +96,6 @@ public class XMLParser implements ProblemParser {
                 initialize(utilityFactor);
                 makeNeighbors(utilityFactor, lParticipant);
             }
-        }
-
-        final int nMediators = mediators.size();
-        for (int i = 0; i < nMediators; i++) {
-            final MediatorFactor mediator = mediators.get(i);
-            mediator.setNElementsA(nSellers.get(i));
         }
 
         return factors;
