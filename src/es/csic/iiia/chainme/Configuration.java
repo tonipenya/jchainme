@@ -2,7 +2,7 @@ package es.csic.iiia.chainme;
 
 import es.csic.iiia.chainme.communication.AbstractCommunicationAdapter;
 import es.csic.iiia.chainme.communication.ParallelCommunicationAdapter;
-import es.csic.iiia.chainme.parsers.ProblemParser;
+import es.csic.iiia.chainme.io.ProblemParser;
 import es.csic.iiia.maxsum.MaxOperator;
 import es.csic.iiia.maxsum.Maximize;
 

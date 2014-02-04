@@ -1,4 +1,4 @@
-package es.csic.iiia.chainme.parsers;
+package es.csic.iiia.chainme.io;
 
 @SuppressWarnings("serial")
 public class ParserException extends RuntimeException {

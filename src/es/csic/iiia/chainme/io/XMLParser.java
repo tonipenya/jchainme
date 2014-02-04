@@ -1,4 +1,4 @@
-package es.csic.iiia.chainme.parsers;
+package es.csic.iiia.chainme.io;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

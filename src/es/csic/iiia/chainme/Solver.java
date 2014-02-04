@@ -40,9 +40,9 @@ import es.csic.iiia.chainme.algorithms.Algorithm;
 import es.csic.iiia.chainme.algorithms.Chainme;
 import es.csic.iiia.chainme.communication.ParallelCommunicationAdapter;
 import es.csic.iiia.chainme.communication.SequentialCommunicationAdapter;
-import es.csic.iiia.chainme.parsers.LibDaiParser;
-import es.csic.iiia.chainme.parsers.ParserException;
-import es.csic.iiia.chainme.parsers.XMLParser;
+import es.csic.iiia.chainme.io.LibDaiParser;
+import es.csic.iiia.chainme.io.ParserException;
+import es.csic.iiia.chainme.io.XMLParser;
 import es.csic.iiia.maxsum.Factor;
 import gnu.getopt.Getopt;
 

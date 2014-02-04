@@ -34,7 +34,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-package es.csic.iiia.chainme.parsers;
+package es.csic.iiia.chainme.io;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
